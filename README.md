@@ -7,4 +7,6 @@ To start your app:
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
   * Visit [`localhost:4000`](http://localhost:4000) from your browser and choose game.
 
-
+## Screenshot
+<img src="./priv/static/images/screenshot.png" alt="drawing" width="400"/>
+<!-- ![Sudoku](./priv/static/images/screenshot.png) -->
