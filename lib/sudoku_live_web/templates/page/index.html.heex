@@ -1,0 +1,14 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
+  <p>Its time to break before production!!</p>
+</section>
+
+<section class="row">
+  <article class="column">
+    <h2>Games</h2>
+    <ul>
+      <li><a href={Routes.sudoku_url(SudokuLiveWeb.Endpoint, :index)}>Sudoku</a></li>
+      <li><a href={Routes.cross_url(SudokuLiveWeb.Endpoint, :index)}>Crossword</a></li>
+    </ul>
+  </article>
+</section>

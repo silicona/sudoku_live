@@ -1,0 +1,15 @@
+
+  <div id="crossword-view">
+    <h2 id="crossword-title">Crossword</h2>
+    <div id="crossword-resp"></div>
+    <div id="crossword-board" class="crossword-board"></div>
+    <div class="crossword_controles">
+      <button id="btn-correct">Correct crossword</button>
+    </div>
+    <div id="crossword-defs" class="crossword-defs"></div>
+    <div id="go-up" class="go-up" phx-hook="CrosswordGoUp">Go up</div>
+  </div>
+
+
+  <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/cross.css")}/>
+  <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/cross.js")}></script>

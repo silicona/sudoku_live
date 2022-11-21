@@ -1,0 +1,59 @@
+<div id="sudoku-view">
+  <h2>Sudoku</h2>
+
+  <div class="sudoku-board">
+    <div class="sudoku-resp">
+      <%= if !is_nil(@resp) && @resp != "" do %>
+        <h3><%= @resp %></h3>
+      <% end %>
+    </div>
+    <%= if !is_nil(@board) && Enum.count(@board) > 0 do %>
+      <div class={"board " <> @corregir_on}>
+        <%= for {line, i} <- Enum.with_index(@board)do %>
+          <div class="line">
+          <%= for {cell, j} <- Enum.with_index(line) do %>
+            <% cell_id =  "c-"<>Integer.to_string(i)<>"-"<>Integer.to_string(j) %>
+            <div class="cell" id={cell_id}>
+            <%= cond do %>
+              <%  cell > @val_ok -> %>
+                <input type="text" class="cell-input ok" maxlength="1" phx-blur="sudoku-blur" phx-value-line={i} phx-value-col={j} value ={cell - @val_ok}>
+              <%  cell > (@val_ok - @val_ko_visible) -> %>
+                <input type="text" class="cell-input ok ko-visible" maxlength="1" phx-blur="sudoku-blur" phx-value-line={i} phx-value-col={j} value ={cell - (@val_ok - @val_ko_visible)}>
+              <%  cell > @val_ko -> %>
+                <input type="text" class="cell-input ko" maxlength="1" phx-blur="sudoku-blur" phx-value-line={i} phx-value-col={j} value ={cell - @val_ko}>
+              <%  cell > @val_ko_visible -> %>
+                <input type="text" class="cell-input ko ko-visible" maxlength="1" phx-blur="sudoku-blur" phx-value-line={i} phx-value-col={j} value ={cell - @val_ko_visible}>
+              <% cell > 0 -> %>
+                <span class="cell-input base"><%= cell %></span>
+              <% true -> %>
+                <input type="text" class="cell-input" maxlength="1" phx-blur="sudoku-blur" phx-click="sudoku-click" phx-value-line={i} phx-value-col={j}>
+            <% end %>
+              
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="controles">
+      <div class="botones">
+      	<label class="custom_check">
+			    <input type="checkbox" phx-click="sudoku-change-posibles" value="1" {@posibles_check}>Activar posibilidades<i></i>
+		    </label>
+      	<label class="custom_check">
+			    <input type="checkbox" phx-click="sudoku-change-corregir" value="1" {@corregir_check}>Corregir sudoku<i></i>
+		    </label>
+      </div>
+      <div class="botones">
+        <label for="sel_dif" style="display: inline-block">Dificultad</label>
+        <select id="sel_dif" phx-blur="sudoku-asignar-dif">
+        <%= for {title, num} <- @difs do %>
+          <option value={num} {if @dif == num, do: [selected: "selected"], else: []}><%= title %></option>
+        <% end %>
+        </select>
+        <input type="submit" phx-click="sudoku-reiniciar" value="Reiniciar sudoku">
+      </div>
+    </div>
+  </div>
+</div>
