@@ -1,5 +1,5 @@
 # SudokuLive
-Game apps build in Elixir 1.2 with Phoenix 1.6
+Game apps built in Elixir 1.2 with Phoenix 1.6
 
 To start your app:
   * Install Phoenix, [the Elixir´s framework]("https://github.com/phoenixframework/phoenix").
